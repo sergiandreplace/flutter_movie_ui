@@ -155,11 +155,18 @@ class MovieHeader extends StatelessWidget {
         Rating(3),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 18),
-          child: Text(
-            movie.description,
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w300,
+          child: Text.rich(
+            TextSpan(
+              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
+              children: <TextSpan>[
+                TextSpan(
+                  text: movie.description,
+                ),
+                TextSpan(
+                  text: "More...",
+                  style: TextStyle(color: Colors.indigoAccent),
+                ),
+              ],
             ),
           ),
         )
