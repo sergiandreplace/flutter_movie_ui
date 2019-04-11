@@ -113,11 +113,16 @@ class MoviePoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var borderRadius = BorderRadius.all(Radius.circular(10));
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: borderRadius),
       elevation: 8,
-      child: Image.asset(
-        poster,
-        height: 160,
+      child: ClipRRect(
+        borderRadius: borderRadius,
+        child: Image.asset(
+          poster,
+          height: 160,
+        ),
       ),
     );
   }
@@ -318,18 +323,21 @@ class MovieSuggestions extends StatelessWidget {
             itemCount: suggestions.length,
             padding: EdgeInsets.symmetric(horizontal: 12),
             separatorBuilder: (context, index) => SizedBox(width: 8),
-            itemBuilder: (context, index) => Container(
-                width: 114,
-                color: Colors.black12,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: <Widget>[
-                    Icon(Icons.image, color: Colors.white, size: 30),
-                    Image.network(
-                      suggestions[index],
-                    ),
-                  ],
-                )),
+            itemBuilder: (context, index) => ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Container(
+                      width: 114,
+                      color: Colors.black12,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: <Widget>[
+                          Icon(Icons.image, color: Colors.white, size: 30),
+                          Image.network(
+                            suggestions[index],
+                          ),
+                        ],
+                      )),
+                ),
           ),
         )
       ],
