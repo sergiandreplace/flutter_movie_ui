@@ -254,6 +254,7 @@ class MovieFeedback extends StatelessWidget {
 class FeedbackButton extends StatelessWidget {
   final IconData icon;
   final String text;
+
   const FeedbackButton(this.icon, this.text, {Key key}) : super(key: key);
 
   @override
@@ -284,6 +285,17 @@ class MovieSuggestions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Text(
+            "Similar like this".toUpperCase(),
+            style: TextStyle(fontSize: 14, color: Colors.black26),
+          ),
+        ),
+      ],
+    );
   }
 }
