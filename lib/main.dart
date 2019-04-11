@@ -60,13 +60,17 @@ class MovieHeaderWithPoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        new MoviePoster(movie.poster),
-        Expanded(
-          child: MovieHeader(movie),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: <Widget>[
+          MoviePoster(movie.poster),
+          SizedBox(width: 16),
+          Expanded(
+            child: MovieHeader(movie),
+          ),
+        ],
+      ),
     );
   }
 }
