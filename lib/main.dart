@@ -60,6 +60,17 @@ class MovieHeaderWithPoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return MovieHeader(movie);
+  }
+}
+
+class MovieHeader extends StatelessWidget {
+  const MovieHeader(this.movie, {Key key}) : super(key: key);
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -77,7 +88,7 @@ class MovieHeaderWithPoster extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        new Rating(3),
+        Rating(3),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 18),
           child: Text(
