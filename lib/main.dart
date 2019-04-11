@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 import 'package:flutter_movie_ui/movie.dart';
 
 void main() => runApp(MyApp());
@@ -56,7 +56,13 @@ class MovieHeaderWithPoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: <Widget>[
+        Text("${movie.year} · ${movie.genre}".toUpperCase()),
+        Text(movie.title),
+        Text(movie.description)
+      ],
+    );
   }
 }
 
