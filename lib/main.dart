@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Movie UI',
       theme: ThemeData(
+        fontFamily: "Montserrat"
       ),
       home: MoviePage(Movies.getMovie()),
     );
@@ -23,16 +24,19 @@ class MoviePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          MovieThumbnail(movie.thumbnail),
-          MovieHeaderWithPoster(movie),
-          HorizontalLine(),
-          MoviePeople(movie),
-          MovieFeedback(),
-          HorizontalLine(),
-          MovieSuggestions(movie.similar),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 40),
+        child: Column(
+          children: <Widget>[
+            MovieThumbnail(movie.thumbnail),
+            MovieHeaderWithPoster(movie),
+            HorizontalLine(),
+            MoviePeople(movie),
+            MovieFeedback(),
+            HorizontalLine(),
+            MovieSuggestions(movie.similar),
+          ],
+        ),
       ),
     );
   }
