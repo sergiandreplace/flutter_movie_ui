@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_ui/movie.dart';
 
@@ -171,14 +173,23 @@ class Rating extends StatelessWidget {
     return Row(
       children: Iterable.generate(
         5,
-        (i) => Icon(
-              i < rating ? Icons.star : Icons.star_border,
-              size: 24,
-              color: Colors.yellow,
+        (i) => ShaderMask(
+              shaderCallback: shader,
+              child: Icon(
+                i < rating ? Icons.star : Icons.star_border,
+                size: 24,
+                color: Colors.yellow,
+              ),
             ),
       ).toList(),
     );
   }
+
+  ui.Shader shader(Rect rect) => ui.Gradient.linear(
+        Offset(0, 0),
+        Offset(0, rect.height),
+        [Colors.yellowAccent, Colors.orange],
+      );
 }
 
 class HorizontalLine extends StatelessWidget {
