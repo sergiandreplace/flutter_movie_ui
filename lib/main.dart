@@ -8,7 +8,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movie UI',
-      theme: ThemeData(fontFamily: "Montserrat",),
+      theme: ThemeData(
+        fontFamily: "Montserrat",
+      ),
       home: MoviePage(Movies.getMovie()),
     );
   }
@@ -74,6 +76,15 @@ class MovieHeaderWithPoster extends StatelessWidget {
             fontSize: 32,
             fontWeight: FontWeight.w500,
           ),
+        ),
+        Row(
+          children: <Widget>[
+            Icon(Icons.star, size: 24, color: Colors.yellow),
+            Icon(Icons.star, size: 24, color: Colors.yellow),
+            Icon(Icons.star, size: 24, color: Colors.yellow),
+            Icon(Icons.star_border, size: 24, color: Colors.yellow),
+            Icon(Icons.star_border, size: 24, color: Colors.yellow),
+          ],
         ),
         Text(
           movie.description,
