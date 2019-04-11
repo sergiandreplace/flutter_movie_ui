@@ -180,7 +180,13 @@ class Rating extends StatelessWidget {
 class HorizontalLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Container(
+        height: 0.5,
+        color: Colors.black12,
+      ),
+    );
   }
 }
 
