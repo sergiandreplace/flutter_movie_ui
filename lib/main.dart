@@ -241,22 +241,33 @@ class MovieFeedback extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: <Widget>[
+          new FeedbackButton(Icons.thumb_up, "Rate"),
+        ],
+      ),
+    );
+  }
+}
+
+class FeedbackButton extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  const FeedbackButton(this.icon, this.text, {Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.thumb_up,
-                    size: 32,
-                    color: Colors.black54,
-                  ),
-                ),
-                Text("Rate", style: TextStyle(fontSize: 14, color: Colors.black38))
-              ],
+            child: Icon(
+              icon,
+              size: 32,
+              color: Colors.black54,
             ),
           ),
+          Text(text, style: TextStyle(fontSize: 14, color: Colors.black38))
         ],
       ),
     );
