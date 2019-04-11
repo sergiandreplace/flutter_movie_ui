@@ -241,7 +241,9 @@ class MovieFeedback extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: <Widget>[
-          new FeedbackButton(Icons.thumb_up, "Rate"),
+          FeedbackButton(Icons.add, "My List"),
+          FeedbackButton(Icons.thumb_up, "Rate"),
+          FeedbackButton(Icons.share, "Share"),
         ],
       ),
     );
