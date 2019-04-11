@@ -1,4 +1,4 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_movie_ui/movie.dart';
 
 void main() => runApp(MyApp());
@@ -8,9 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movie UI',
-      theme: ThemeData(
-        fontFamily: "Montserrat"
-      ),
+      theme: ThemeData(fontFamily: "Montserrat",),
       home: MoviePage(Movies.getMovie()),
     );
   }
@@ -63,9 +61,27 @@ class MovieHeaderWithPoster extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("${movie.year} · ${movie.genre}".toUpperCase()),
-        Text(movie.title),
-        Text(movie.description)
+        Text(
+          "${movie.year} · ${movie.genre}".toUpperCase(),
+          style: TextStyle(
+            fontWeight: FontWeight.w400,
+            color: Colors.indigoAccent,
+          ),
+        ),
+        Text(
+          movie.title,
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          movie.description,
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w300,
+          ),
+        )
       ],
     );
   }
@@ -106,8 +122,3 @@ class MovieSuggestions extends StatelessWidget {
     return Container();
   }
 }
-
-
-
-
-
