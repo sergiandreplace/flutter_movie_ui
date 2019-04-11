@@ -98,13 +98,15 @@ class Rating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: <Widget>[
-        Icon(Icons.star, size: 24, color: Colors.yellow),
-        Icon(Icons.star, size: 24, color: Colors.yellow),
-        Icon(Icons.star, size: 24, color: Colors.yellow),
-        Icon(Icons.star_border, size: 24, color: Colors.yellow),
-        Icon(Icons.star_border, size: 24, color: Colors.yellow),
-      ],
+      children: Iterable.generate(
+        5,
+            (i) =>
+            Icon(
+              i < rating ? Icons.star : Icons.star_border,
+              size: 24,
+              color: Colors.yellow,
+            ),
+      ).toList(),
     );
   }
 }
