@@ -52,7 +52,10 @@ class MovieThumbnail extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: <Widget>[
-            Image.asset(thumbnail),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 1),
+              child: Image.asset(thumbnail),
+            ),
             Icon(
               Icons.play_circle_outline,
               size: 100,
@@ -64,9 +67,9 @@ class MovieThumbnail extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Color(0x00f5f5f5), Color(0xfff5f5f5)],
-              begin:Alignment.topCenter,
+              begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-            )
+            ),
           ),
           height: 80,
         )
