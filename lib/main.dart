@@ -237,7 +237,29 @@ class MovieField extends StatelessWidget {
 class MovieFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 12),
+      child: Row(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.thumb_up,
+                    size: 32,
+                    color: Colors.black54,
+                  ),
+                ),
+                Text("Rate", style: TextStyle(fontSize: 14, color: Colors.black38))
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
