@@ -62,11 +62,16 @@ class MovieHeaderWithPoster extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Image.asset(
-          movie.poster,
-          height: 160,
+        Card(
+          elevation: 8,
+          child: Image.asset(
+            movie.poster,
+            height: 160,
+          ),
         ),
-        MovieHeader(movie),
+        Expanded(
+          child: MovieHeader(movie),
+        ),
       ],
     );
   }
