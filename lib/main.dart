@@ -297,9 +297,11 @@ class MovieSuggestions extends StatelessWidget {
         ),
         Container(
           height: 200,
-          child: ListView.builder(
+          padding: EdgeInsets.symmetric(vertical: 16),
+          child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: suggestions.length,
+            separatorBuilder: (context, index) => SizedBox(width: 8),
             itemBuilder: (context, index) => Image.network(
                   suggestions[index],
                 ),
