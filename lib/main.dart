@@ -24,16 +24,20 @@ class MoviePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          MovieThumbnail(movie.thumbnail),
-          MovieHeaderWithPoster(movie),
-          HorizontalLine(),
-          MoviePeople(movie),
-          MovieFeedback(),
-          HorizontalLine(),
-          MovieSuggestions(movie.similar),
-        ],
+      body: MediaQuery.removePadding(
+        removeTop: true,
+        context: context,
+        child: ListView(
+          children: <Widget>[
+            MovieThumbnail(movie.thumbnail),
+            MovieHeaderWithPoster(movie),
+            HorizontalLine(),
+            MoviePeople(movie),
+            MovieFeedback(),
+            HorizontalLine(),
+            MovieSuggestions(movie.similar),
+          ],
+        ),
       ),
     );
   }
