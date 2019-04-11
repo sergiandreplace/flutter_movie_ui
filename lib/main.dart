@@ -61,6 +61,7 @@ class MovieHeaderWithPoster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text("${movie.year} · ${movie.genre}".toUpperCase()),
         Text(movie.title),
