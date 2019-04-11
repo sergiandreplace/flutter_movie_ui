@@ -78,11 +78,14 @@ class MovieHeaderWithPoster extends StatelessWidget {
           ),
         ),
         new Rating(3),
-        Text(
-          movie.description,
-          style: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w300,
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 18),
+          child: Text(
+            movie.description,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w300,
+            ),
           ),
         )
       ],
