@@ -24,19 +24,16 @@ class MoviePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 40),
-        child: Column(
-          children: <Widget>[
-            MovieThumbnail(movie.thumbnail),
-            MovieHeaderWithPoster(movie),
-            HorizontalLine(),
-            MoviePeople(movie),
-            MovieFeedback(),
-            HorizontalLine(),
-            MovieSuggestions(movie.similar),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          MovieThumbnail(movie.thumbnail),
+          MovieHeaderWithPoster(movie),
+          HorizontalLine(),
+          MoviePeople(movie),
+          MovieFeedback(),
+          HorizontalLine(),
+          MovieSuggestions(movie.similar),
+        ],
       ),
     );
   }
@@ -49,7 +46,7 @@ class MovieThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Image.asset(thumbnail);
   }
 }
 
