@@ -46,7 +46,17 @@ class MovieThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(thumbnail);
+    return Stack(
+      alignment: Alignment.center,
+      children: <Widget>[
+        Image.asset(thumbnail),
+        Icon(
+          Icons.play_circle_outline,
+          size: 100,
+          color: Colors.white,
+        ),
+      ],
+    );
   }
 }
 
