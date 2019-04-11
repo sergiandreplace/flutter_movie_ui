@@ -299,6 +299,7 @@ class MovieSuggestions extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => Image.network(
                 suggestions[index],
+                height: 80,
               ),
         )
       ],
