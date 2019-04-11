@@ -77,15 +77,7 @@ class MovieHeaderWithPoster extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        Row(
-          children: <Widget>[
-            Icon(Icons.star, size: 24, color: Colors.yellow),
-            Icon(Icons.star, size: 24, color: Colors.yellow),
-            Icon(Icons.star, size: 24, color: Colors.yellow),
-            Icon(Icons.star_border, size: 24, color: Colors.yellow),
-            Icon(Icons.star_border, size: 24, color: Colors.yellow),
-          ],
-        ),
+        new Rating(3),
         Text(
           movie.description,
           style: TextStyle(
@@ -93,6 +85,25 @@ class MovieHeaderWithPoster extends StatelessWidget {
             fontWeight: FontWeight.w300,
           ),
         )
+      ],
+    );
+  }
+}
+
+class Rating extends StatelessWidget {
+  final int rating;
+
+  const Rating(this.rating, {Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Icon(Icons.star, size: 24, color: Colors.yellow),
+        Icon(Icons.star, size: 24, color: Colors.yellow),
+        Icon(Icons.star, size: 24, color: Colors.yellow),
+        Icon(Icons.star_border, size: 24, color: Colors.yellow),
+        Icon(Icons.star_border, size: 24, color: Colors.yellow),
       ],
     );
   }
