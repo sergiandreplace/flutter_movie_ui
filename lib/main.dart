@@ -295,12 +295,14 @@ class MovieSuggestions extends StatelessWidget {
             style: TextStyle(fontSize: 14, color: Colors.black26),
           ),
         ),
-        ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => Image.network(
-                suggestions[index],
-                height: 80,
-              ),
+        Container(
+          height: 200,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) => Image.network(
+                  suggestions[index],
+                ),
+          ),
         )
       ],
     );
