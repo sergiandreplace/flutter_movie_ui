@@ -62,17 +62,28 @@ class MovieHeaderWithPoster extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Card(
-          elevation: 8,
-          child: Image.asset(
-            movie.poster,
-            height: 160,
-          ),
-        ),
+        new MoviePoster(movie.poster),
         Expanded(
           child: MovieHeader(movie),
         ),
       ],
+    );
+  }
+}
+
+class MoviePoster extends StatelessWidget {
+  final String poster;
+
+  const MoviePoster(this.poster, {Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 8,
+      child: Image.asset(
+        poster,
+        height: 160,
+      ),
     );
   }
 }
@@ -127,8 +138,7 @@ class Rating extends StatelessWidget {
     return Row(
       children: Iterable.generate(
         5,
-            (i) =>
-            Icon(
+        (i) => Icon(
               i < rating ? Icons.star : Icons.star_border,
               size: 24,
               color: Colors.yellow,
