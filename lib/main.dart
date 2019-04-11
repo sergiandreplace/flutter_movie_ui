@@ -197,7 +197,40 @@ class MoviePeople extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        children: <Widget>[
+          MovieField("Cast", movie.cast),
+          MovieField("Directors", movie.directors),
+        ],
+      ),
+    );
+  }
+}
+
+class MovieField extends StatelessWidget {
+  final String field;
+  final String value;
+
+  MovieField(this.field, this.value, {Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("$field: ", style: TextStyle(color: Colors.black38, fontSize: 12, fontWeight: FontWeight.w300)),
+          Expanded(
+              child: Text(
+            value,
+            style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w300),
+          ))
+        ],
+      ),
+    );
   }
 }
 
