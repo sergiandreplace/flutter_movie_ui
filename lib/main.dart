@@ -240,6 +240,7 @@ class MovieFeedback extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 12),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           FeedbackButton(Icons.add, "My List"),
           FeedbackButton(Icons.thumb_up, "Rate"),
