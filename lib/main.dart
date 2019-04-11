@@ -302,9 +302,18 @@ class MovieSuggestions extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: suggestions.length,
             separatorBuilder: (context, index) => SizedBox(width: 8),
-            itemBuilder: (context, index) => Image.network(
-                  suggestions[index],
-                ),
+            itemBuilder: (context, index) => Container(
+                width: 114,
+                color: Colors.black12,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    Icon(Icons.image, color: Colors.white, size: 30),
+                    Image.network(
+                      suggestions[index],
+                    ),
+                  ],
+                )),
           ),
         )
       ],
