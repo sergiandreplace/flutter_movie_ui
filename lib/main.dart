@@ -13,15 +13,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Montserrat",
       ),
-      home: MoviePage(Movies.getMovie()),
+      home: MoviePage(),
     );
   }
 }
 
-class MoviePage extends StatelessWidget {
-  final Movie movie;
+class MoviePage extends StatefulWidget {
+  final movies = Movies();
 
-  const MoviePage(this.movie, {Key key}) : super(key: key);
+  @override
+  _MoviePageState createState() => _MoviePageState();
+}
+
+class _MoviePageState extends State<MoviePage> {
+  bool isLoaded = false;
+  Movie movie;
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +35,54 @@ class MoviePage extends StatelessWidget {
       body: MediaQuery.removePadding(
         removeTop: true,
         context: context,
-        child: ListView(
-          children: <Widget>[
-            MovieThumbnail(movie.thumbnail),
-            MovieHeaderWithPoster(movie),
-            HorizontalLine(),
-            MoviePeople(movie),
-            MovieFeedback(),
-            HorizontalLine(),
-            MovieSuggestions(movie.similar),
-          ],
-        ),
+        child: isLoaded ? MovieSections(movie: movie) : Loader(),
       ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.movies.getMovie().then((value) {
+      setState(() {
+        movie = value;
+        isLoaded = true;
+      });
+    });
+  }
+}
+
+class Loader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text("Loading..."),
+      ),
+    );
+  }
+}
+
+class MovieSections extends StatelessWidget {
+  const MovieSections({
+    Key key,
+    @required this.movie,
+  }) : super(key: key);
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        MovieThumbnail(movie.thumbnail),
+        MovieHeaderWithPoster(movie),
+        HorizontalLine(),
+        MoviePeople(movie),
+        MovieFeedback(),
+        HorizontalLine(),
+        MovieSuggestions(movie.similar),
+      ],
     );
   }
 }
@@ -186,13 +228,13 @@ class Rating extends StatelessWidget {
       children: Iterable.generate(
         5,
         (i) => ShaderMask(
-              shaderCallback: shader,
-              child: Icon(
-                i < rating ? Icons.star : Icons.star_border,
-                size: 24,
-                color: Colors.yellow,
-              ),
-            ),
+          shaderCallback: shader,
+          child: Icon(
+            i < rating ? Icons.star : Icons.star_border,
+            size: 24,
+            color: Colors.yellow,
+          ),
+        ),
       ).toList(),
     );
   }
@@ -249,11 +291,16 @@ class MovieField extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text("$field: ", style: TextStyle(color: Colors.black38, fontSize: 12, fontWeight: FontWeight.w300)),
+          Text("$field: ",
+              style: TextStyle(
+                  color: Colors.black38,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w300)),
           Expanded(
               child: Text(
             value,
-            style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w300),
+            style: TextStyle(
+                color: Colors.black, fontSize: 12, fontWeight: FontWeight.w300),
           ))
         ],
       ),
@@ -331,20 +378,20 @@ class MovieSuggestions extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 12),
             separatorBuilder: (context, index) => SizedBox(width: 8),
             itemBuilder: (context, index) => ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Container(
-                      width: 114,
-                      color: Colors.black12,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: <Widget>[
-                          Icon(Icons.image, color: Colors.white, size: 30),
-                          Image.network(
-                            suggestions[index],
-                          ),
-                        ],
-                      )),
-                ),
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              child: Container(
+                  width: 114,
+                  color: Colors.black12,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      Icon(Icons.image, color: Colors.white, size: 30),
+                      Image.network(
+                        suggestions[index],
+                      ),
+                    ],
+                  )),
+            ),
           ),
         )
       ],

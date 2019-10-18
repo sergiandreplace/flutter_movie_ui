@@ -1,5 +1,5 @@
 class Movies {
-  static Movie getMovie() => const Movie(
+  Future<Movie> getMovie() => Future(() => Movie(
         thumbnail: "assets/finding-dory-thumbnail.jpg",
         poster: "assets/finding-dory-poster.png",
         year: "2016",
@@ -22,7 +22,7 @@ class Movies {
           "https://is3-ssl.mzstatic.com/image/thumb/Video111/v4/5a/56/42/5a5642ce-7bdb-cbcc-f9d0-ec2782d05a60/pr_source.lsr/460x0w.png",
           "https://example.com/example.png"
         ],
-      );
+      ));
 }
 
 class Movie {
@@ -48,4 +48,10 @@ class Movie {
       this.cast,
       this.directors,
       this.similar});
+
+  static Movie fromJson(content) {
+    return Movie(
+      thumbnail: content["thumbnail"],
+    );
+  }
 }
